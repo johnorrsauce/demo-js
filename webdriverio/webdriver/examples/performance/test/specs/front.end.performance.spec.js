@@ -49,6 +49,40 @@ describe('Sauce Labs Front-End Performance', () => {
     metrics.forEach(metric => expect(metric in performance, `${metric} metric is missing`));
   });
 
+  it('logs (sauce:performance) should check if all requestTypes were captured', async () => {
+    //
+    // The expected requestTypes
+    const requestTypes = [
+      'Font',
+      'Script',
+      'Image',
+      'Ping',
+      'XHR',
+      'Stylesheet',
+      'Other',
+      'Document',
+      'Fetch',
+    ];
+    //
+    // Now load the url and wait for it to be displayed
+    await browser.url('https://www.saucelabs.com');
+
+    //
+    // Get the performance logs
+    const performance = await browser.execute(
+      'sauce:log',
+      {
+        type: 'sauce:performance',
+        options: {
+          fullReport: true,
+        },
+      });
+
+    //
+    // Verify that all logs have been captured
+    requestTypes.forEach(requestType => expect(requestType in performance, `${requestType} requestType is missing`));
+  });
+
   it('(sauce:performance) should validate speedIndex', async () => {
     //
     // Get the performance logs
