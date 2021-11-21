@@ -32,6 +32,9 @@ config.capabilities = [
     // @ts-ignore
     allowTouchIdEnroll: true,
     build: buildName,
+    // Needed because as of Appium 1.22 the noReset: true (default set by Sauce)
+    // does not allow to reset the app. This will hard force it
+    shouldTerminateApp: true
   },
   {
     // The defaults you need to have in your config
@@ -50,6 +53,9 @@ config.capabilities = [
     // @ts-ignore
     allowTouchIdEnroll: true,
     build: buildName,
+    // Needed because as of Appium 1.22 the noReset: true (default set by Sauce)
+    // does not allow to reset the app. This will hard force it
+    shouldTerminateApp: true
   }
 ];
 
