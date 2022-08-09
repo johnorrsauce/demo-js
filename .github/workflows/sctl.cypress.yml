@@ -4,8 +4,8 @@ on:
   push:
 	# Only trigger if files in this path changed
 	paths:
-	  - 'webdriverio/webdriver/best-practices/**'
-	  - '.github/workflows/wdio.webdriver.bp.yml'
+	  - 'testrunner-toolkit/cypress/best-practices/**'
+	  - '.github/workflows/sctl.cypress.yml'
 	  # Don't run on Markdown changes
 	  - '!**.md'
 	branches: [ main ]
